@@ -2,11 +2,11 @@
   "name": "weather-landing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": ["javascript", "landing", "weather", "API"],
+  "author": "Federico Gomez gomez00federico@gmail.com",
+  "license": "MIT"
 }
