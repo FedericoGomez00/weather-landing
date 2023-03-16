@@ -18,22 +18,70 @@ async function fetchData(urlApi, options) {
 }
 
 (async () => {
+    class DayInfo {
+        constructor(date) {
+            this.date = date;
+            this.day = date.getDay();
+            this.month = date.getMonth();
+            this.info = [];
+        }
+
+        setInfo(hour, temp, description, code) {
+            this.info.push({
+                'hour': hour,
+                'temp': temp,
+                'description': description,
+                'code': code
+            })
+        }
+    }
+
     try {
         const weather = await fetchData(API, options);
-        const card = `
-        ${weather.data.map(day => `
-            <section class="day-card">
-                <h2 class="day-card__title">${day.datetime}</h6>
-                <p class="day-card__desc">${day.weather.description}</p>
-                <figure>
-                    <img src="../img/${day.weather.code}.png" alt="Imagen de referencia del clima">
-                </figure>
-                <p class="day-card__temp">${day.temp}°C</p>
-            </section>
-        `).join('')}
-        `;
+        const days = [];
 
-        card_box.innerHTML = card;
+        // Agrupa las horas por día
+        for (let day of weather.data) {
+            let date = new Date(day.datetime);
+
+
+            if (!days.some(d => {
+                return date.getDay() == d.day;
+            })) {
+                days.push(new DayInfo(date));
+            }
+            days[days.length - 1].setInfo(
+                hour = date.getHours(),
+                temp = day.temp,
+                description = day.weather.description,
+                code = day.weather.code
+            );
+
+        }
+
+        let hourCards = ``;
+        for (let day of days) {
+            hourCards = `
+                ${day.info.map(hour => `
+                    <h3 class="day-card__hour">${hour.hour}</h3>
+                    <section class="day-card__info">
+                        <p class="day-card__desc">${hour.temp}</p>
+                        <p class="day-card__temp">${hour.description}</p>
+                    </section>
+                `).join('')}
+            `;
+        }
+        const box = `
+                ${days.map(day => `
+                    <section class="day-card">
+                        <h2 class="day-card__date">${day.day}/${day.month}</h6>
+                        
+                        ${hourCards}
+                    </section>
+                `).join('')}
+            `;
+
+        card_box.innerHTML = box;
     } catch (error) {
         console.error(`Error al renderizar el clima: ${error}`);
     }
