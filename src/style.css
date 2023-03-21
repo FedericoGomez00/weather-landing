@@ -18,6 +18,8 @@ body {
 }
 
 .day-card {
+    margin: 5px;
+    font-size: 1.6rem;
     border: .1rem solid black;
     min-width: 25rem;
 }
