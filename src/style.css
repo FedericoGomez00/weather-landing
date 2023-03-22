@@ -12,6 +12,11 @@ body {
     font-size: 1.6rem;
 }
 
+.location {
+    color: indigo;
+    margin-top: 15px;
+}
+
 #card-box {
     display: flex;
     flex-wrap: wrap;
@@ -19,7 +24,12 @@ body {
 
 .day-card {
     margin: 5px;
-    font-size: 1.6rem;
+    padding: 8px;
     border: .1rem solid black;
-    min-width: 25rem;
+    border-radius: 10px;
+    min-width: 270px;
+}
+.day-card h2 {
+    margin: 5px;
+    color: coral;
 }
