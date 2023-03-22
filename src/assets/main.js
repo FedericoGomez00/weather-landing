@@ -77,7 +77,7 @@ async function fetchData(urlApi, options) {
                         <h2 class="day-card__date">${day_number[day.day]}</h6>
                         
                         ${day.info.map(hour => `
-                            <h3 class="day-card__hour">${hour.hour}</h3>
+                            <h3 class="day-card__hour">${hour.hour}:00 hs</h3>
                             <section class="day-card__info">
                                 <p class="day-card__desc">${hour.temp}°C</p>
                                 <p class="day-card__temp">${hour.description}</p>
