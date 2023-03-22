@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.6rem;
+}
+
+.location {
+    color: indigo;
+    margin-top: 15px;
+}
+
+#card-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day-card {
+    margin: 5px;
+    padding: 8px;
+    border: .1rem solid black;
+    border-radius: 10px;
+    min-width: 270px;
+}
+.day-card h2 {
+    margin: 5px;
+    color: coral;
+}
